@@ -1,4 +1,0 @@
-startGame
-autoStarted
-1
-asd asd1 asd2
