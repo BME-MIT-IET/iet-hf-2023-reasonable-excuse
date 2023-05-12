@@ -1,0 +1,17 @@
+Elfogadható parancsok:
+	startGame
+	loadGame
+Kérem adja meg a játék file nevét
+Kérem adja meg a játék seedjét (hagy üresen randomért)
+Kérem adja meg a játékosok neveit space-el elválasztva
+Jelenlegi játékos: asd
+Elfogadható parancsok:
+	saveGame
+	exitGame
+	playerSteps
+	interact
+	createAgent
+	useAgent
+	stealMaterial
+	stealGear
+	endTurn
