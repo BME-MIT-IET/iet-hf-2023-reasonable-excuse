@@ -9,8 +9,5 @@
         <module name="operativ_tarsulat" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="operativ_tarsulat" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
