@@ -16,12 +16,13 @@ public class Prototype {
 	 * can be console or file input stream 
 	 */
 	private static InputStream is;
+	private static Random rand = new Random();
 	
 	/*
 	 * Gets the next command either from console or from file depending 
 	 */
 	private static String readLine() {
-		String parser = "";
+		StringBuffer parser = new StringBuffer();
 		int ch;
 		try {
 			boolean hadChar = false;
@@ -29,17 +30,17 @@ public class Prototype {
 				hadChar = true;
 				if(ch=='\n')
 					break;
-				parser += (char)ch;
+				parser.append((char)ch);
 			}
 			if(!hadChar) {
 				System.exit(0);
 			}
 		} catch (IOException e) {
-			System.out.println("Hiba történt olvasás során");
+			System.out.println("Hiba tï¿½rtï¿½nt olvasï¿½s sorï¿½n");
 			e.printStackTrace();
 			System.exit(2);
 		}
-		return parser.trim();
+		return parser.toString().trim();
 	}
 	
 	/*
@@ -58,10 +59,10 @@ public class Prototype {
 				if(tmp>0&&tmp<=options.length) {
 					input = tmp;
 				}else {
-					System.out.println("Kérem a megadott intervalloumból válasszon");
+					System.out.println("Kï¿½rem a megadott intervalloumbï¿½l vï¿½lasszon");
 				}				
 			}catch(NumberFormatException e) {
-				System.out.println("Kérem számot adjon meg");
+				System.out.println("Kï¿½rem szï¿½mot adjon meg");
 			}
 		}
 		return input-1;
@@ -85,7 +86,7 @@ public class Prototype {
 				// Store file stream
 			}catch(FileNotFoundException e) {
 				// File doesn't exists
-				System.out.println("A megadoot bemeneti file nem létezik");
+				System.out.println("A megadoot bemeneti file nem lï¿½tezik");
 				// Exit because of fatal error
 				System.exit(1);
 			}
@@ -108,33 +109,33 @@ public class Prototype {
 	 * asks for world name, seed, and character names, then generates a world based on these inputs
 	 */
 	public static void startGame() {
-		System.out.println("Kérem adja meg a játék file nevét");
+		System.out.println("Kï¿½rem adja meg a jï¿½tï¿½k file nevï¿½t");
 		String saveFile = readLine();
 		while(!validFilename(saveFile)) {
-			System.out.println("Kérem valós fájlnevet adjon meg");
+			System.out.println("Kï¿½rem valï¿½s fï¿½jlnevet adjon meg");
 		}
 		Integer seed = null;
 		while(seed==null) {
-			System.out.println("Kérem adja meg a játék seedjét (hagy üresen randomért)");
+			System.out.println("Kï¿½rem adja meg a jï¿½tï¿½k seedjï¿½t (hagy ï¿½resen randomï¿½rt)");
 			try {
 				String input = readLine();
-				if(input == "") {
-					seed = new Random().nextInt();
+				if(input.equals("")) {
+					seed = rand.nextInt();
 				}else {
 					seed = Integer.parseInt(input);
 				}
 			}catch (NumberFormatException e) {
-				System.out.println("Kérem egész számot adjon meg");
+				System.out.println("Kï¿½rem egï¿½sz szï¿½mot adjon meg");
 			}
 		}
 		String players = null;
 		while(players == null) {
-			System.out.println("Kérem adja meg a játékosok neveit space-el elválasztva");
+			System.out.println("Kï¿½rem adja meg a jï¿½tï¿½kosok neveit space-el elvï¿½lasztva");
 			String tempPlayers = readLine();
 			if(tempPlayers.contains(" ")) {
 				players = tempPlayers;
 			}else {
-				System.out.println("Kérem legalább két nevet adjon meg space-el elválasztva");
+				System.out.println("Kï¿½rem legalï¿½bb kï¿½t nevet adjon meg space-el elvï¿½lasztva");
 			}
 		}		
 		Game.GetInstance().StartGame(saveFile, seed, players.split(" "));		
@@ -145,10 +146,10 @@ public class Prototype {
 	 * reads the filename from input, than loads game from that file
 	 */
 	public static boolean loadGame() {
-		System.out.println("Kérem adja meg a játék file nevét");
+		System.out.println("Kï¿½rem adja meg a jï¿½tï¿½k file nevï¿½t");
 		String saveFile = readLine();
 		while(!validFilename(saveFile)) {
-			System.out.println("Kérem valós fájlnevet adjon meg");
+			System.out.println("Kï¿½rem valï¿½s fï¿½jlnevet adjon meg");
 		}
 		Game.LoadGame(saveFile);
 		// TODO check if loading was successful
@@ -168,7 +169,7 @@ public class Prototype {
 	 * asks the user, if the game should be saved, then exits the application
 	 */
 	public static void exitGame() {
-		System.out.println("Szeretné elmenteni a játékot kilépés elõtt?");
+		System.out.println("Szeretnï¿½ elmenteni a jï¿½tï¿½kot kilï¿½pï¿½s elï¿½tt?");
 		String in = "";
 		boolean done = false;
 		while(!done) {
@@ -187,7 +188,7 @@ public class Prototype {
 	 * prints all accepted commands listed in the commands argument
 	 */
 	public static void printCommands(String... commands) {
-		System.out.println("Elfogadható parancsok:");
+		System.out.println("Elfogadhatï¿½ parancsok:");
 		for(String command : commands)
 			System.out.println("\t"+command);
 	}
@@ -199,7 +200,7 @@ public class Prototype {
 	public static void playerSteps() {
 		Virologist player = Game.GetInstance().getCurrentVirologist();
 		List<Field> neighbours = player.GetField().GetNeighbours();
-		int fieldIndex = choose("Melyik mezõre menjen a virológus?",neighbours.stream().map(x->x.toString()).toArray(String[]::new));
+		int fieldIndex = choose("Melyik mezï¿½re menjen a virolï¿½gus?",neighbours.stream().map(x->x.toString()).toArray(String[]::new));
 		
 		player.Move(neighbours.get(fieldIndex));
 	}
@@ -232,15 +233,15 @@ public class Prototype {
 		// remove the player, because cannot steal from themself
 		avalibleVirologists.remove(player);
 		// make the user choose a target
-		int virologistIndex = choose("Kérem válasszon célpontot",avalibleVirologists.stream().map(x->x.getName()).toArray(String[]::new));
+		int virologistIndex = choose("Kï¿½rem vï¿½lasszon cï¿½lpontot",avalibleVirologists.stream().map(x->x.getName()).toArray(String[]::new));
 		// gears that can be stolen
 		List<Gear> gears = avalibleVirologists.get(virologistIndex).getGears();
 		if(gears.size()==0) {
-			System.out.println("Nincs a virológusnál semmilyen felszerelés");
+			System.out.println("Nincs a virolï¿½gusnï¿½l semmilyen felszerelï¿½s");
 			return;
 		}
 		// make the user choose a target
-		int gearIndex = choose("Kérem válasszon célpontot", gears.stream().map(x->x.toString()).toArray(String[]::new));
+		int gearIndex = choose("Kï¿½rem vï¿½lasszon cï¿½lpontot", gears.stream().map(x->x.toString()).toArray(String[]::new));
 		player.Steal(avalibleVirologists.get(virologistIndex),gears.get(gearIndex));
 	}
 
@@ -256,7 +257,7 @@ public class Prototype {
 		// remove the player, because they cannot steal from themself
 		avalibleVirologists.remove(player);
 		// make the user choose a target
-		int virologistIndex = choose("Kérem válasszon célpontot",avalibleVirologists.stream().map(x->x.getName()).toArray(String[]::new));
+		int virologistIndex = choose("Kï¿½rem vï¿½lasszon cï¿½lpontot",avalibleVirologists.stream().map(x->x.getName()).toArray(String[]::new));
 		player.StealMaterials(avalibleVirologists.get(virologistIndex));
 	}
 
@@ -270,13 +271,13 @@ public class Prototype {
 		// Possible targets
 		Virologist[] avalibleVirologists = player.GetField().GetVirologists();
 		// make the user choose a target
-		int virologistIndex = choose("Kérem válasszon célpontot",Arrays.asList(avalibleVirologists).stream().map(x->x.getName()).toArray(String[]::new));
+		int virologistIndex = choose("Kï¿½rem vï¿½lasszon cï¿½lpontot",Arrays.asList(avalibleVirologists).stream().map(x->x.getName()).toArray(String[]::new));
 		// agent possibilities
 		List<Agent> agents = player.getAgentInventory();
 		// check if there is any agent to be used
 		if(agents.size()==0)
 			return;
-		int agentIndex = choose("Melyik ágenst használja?",agents.stream().map(x->x.toString()).toArray(String[]::new));
+		int agentIndex = choose("Melyik ï¿½genst hasznï¿½lja?",agents.stream().map(x->x.toString()).toArray(String[]::new));
 		player.UseAgent(avalibleVirologists[virologistIndex], agents.get(agentIndex));
 	}
 
@@ -289,10 +290,10 @@ public class Prototype {
 		Virologist player = Game.GetInstance().getCurrentVirologist();
 		List<GeneticCode> geneticCodes = player.getGeneticCodes();
 		if(geneticCodes.size()==0) {
-			System.out.println("Nincs használható genetikai kód");
+			System.out.println("Nincs hasznï¿½lhatï¿½ genetikai kï¿½d");
 			return;
 		}
-		int codeIndex = choose("Melyik genetikai kódot használja?",geneticCodes.stream().map(x->x.toString()).toArray(String[]::new));
+		int codeIndex = choose("Melyik genetikai kï¿½dot hasznï¿½lja?",geneticCodes.stream().map(x->x.toString()).toArray(String[]::new));
 		player.CreateAgent(geneticCodes.get(codeIndex));
 	}
 	
@@ -318,11 +319,13 @@ public class Prototype {
 				if(loadGame())
 					outOfMenu = true;
 				break;
+			default:
+				break;
 			}			
 		}
 		// Got out of menu, gameplay starts
 		while(true) {
-			System.out.println("Jelenlegi játékos: "+Game.GetInstance().getCurrentVirologist().getName());
+			System.out.println("Jelenlegi jï¿½tï¿½kos: "+Game.GetInstance().getCurrentVirologist().getName());
 			printCommands("saveGame","exitGame","playerSteps","interact","createAgent","useAgent","stealMaterial","stealGear","endTurn");
 			// get the next command
 			String input = readLine();
@@ -354,6 +357,8 @@ public class Prototype {
 				break;
 			case "endTurn":
 				endTurn();
+				break;
+			default:
 				break;
 			}	
 		}

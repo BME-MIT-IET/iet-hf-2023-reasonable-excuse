@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class ProtectiveCape extends Gear implements Serializable {
     private final GearSlot slot = GearSlot.ProtectiveCape;
-
+    private static Random rand = new Random();
     /**
      * Calls the blank ProtectiveCape constructor
      */
@@ -32,7 +32,6 @@ public class ProtectiveCape extends Gear implements Serializable {
     public Boolean HandleTouch(Virologist v, Agent i, Virologist v2) {
         Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName(), v.getName(), i.getClass().getName(), v2.getName());
     	//Generating a random number (0-999)
-        Random rand = new Random();
     	int num = rand.nextInt(1000);
     	//If the number is under 823 it returns true (82.3%)
     	if(num < 823){
