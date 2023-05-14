@@ -403,11 +403,17 @@ public class Game implements Serializable {
     public void SaveGame() {
     	Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName());
     	try {
-    		String path = System.getProperty("user.dir")+"/saves/";
-    		File pathAsFile = new File(path);
-    		if (!Files.exists(Paths.get(path))) {
-    			pathAsFile.mkdir();
-    		}
+
+			String path = System.getProperty("user.dir")+"/saves/";
+			File pathAsFile = new File(path);
+				if (!Files.exists(Paths.get(path))) {
+					try{
+					pathAsFile.mkdir();
+					} catch (SecurityException  e) {
+						e.printStackTrace();
+					}
+				}
+
     		FileOutputStream fos = new FileOutputStream(new File(path+saveFile+".save"));
     		ObjectOutputStream oos = new ObjectOutputStream(fos);
     		try {

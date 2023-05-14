@@ -37,4 +37,11 @@ A vizsgálat pillanatában 311 bug volt összesen 203 osztályban. A következő
 ![String](Kepernyokepek/1ManualisEsStatikus_kepek/bad_string_concatenation.png)
 ![String](Kepernyokepek/1ManualisEsStatikus_kepek/bad_string_concatenation_fixed.png)
 
+- Figyelmen kívül hagytuk azt az esetet, amikor a képen látható függvény kivétellel tér vissza. Egy try-catch blokk alkalmazásával megszűnt a hiba kezeletlenül maradásának a lehetősége.
+![Trycatch](Kepernyokepek/1ManualisEsStatikus_kepek/ignoring_exceptional_return_value.png)
+![Trycatch](Kepernyokepek/1ManualisEsStatikus_kepek/ignoring_exceptional_return_value_fixed.png)
+
+
+
 ## Manuális kód átvizsgálás
+
