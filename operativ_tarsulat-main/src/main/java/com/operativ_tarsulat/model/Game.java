@@ -106,11 +106,11 @@ public class Game implements Serializable {
 	 * @return The description of the class
 	 */
 	public String toString(){
-		String s = new String();
+		StringBuffer s = new StringBuffer();
 		for (Virologist v:virologists){
-			s = s+v.getName()+" ";
+			s.append(v.getName()).append(" ");
 		}
-		return "Game, virologists in the game: "+s;
+		return "Game, virologists in the game: " + s;
 	}
     
     private static Game instance;
@@ -202,10 +202,10 @@ public class Game implements Serializable {
      * @param names Names of the virologists
      */
     public void StartGame(String saveFile, Integer seed, String[] names) {
-    	String namesArgAsString = "Array: ";
+    	StringBuffer namesArgAsString = new StringBuffer().append("Array: ");
     	for(String name : names)
-    		namesArgAsString+=name;
-    	Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName(),saveFile,seed.toString(),namesArgAsString);
+    		namesArgAsString.append(name);
+    	Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName(),saveFile,seed.toString(),namesArgAsString.toString());
     	this.saveFile = saveFile; // store save file name for future saves
     	r = new Random(seed); // Random for world generation 
     	
@@ -315,7 +315,7 @@ public class Game implements Serializable {
     	//TODO generate valid positions
     	for(Field field : fields) {
     		field.setPos(r.nextInt(850), r.nextInt(210) + 50);
-    		field.NotifyAll();
+    		field.NotifyAllObservers();
     	}
     	
     	//add extra connections
@@ -341,7 +341,7 @@ public class Game implements Serializable {
 			virologists.get(i).SetField(field);
 			field.Accept(virologists.get(i));
 		}
-    	virologists.get(currentVirologistIndex).NotifyAll();
+    	virologists.get(currentVirologistIndex).NotifyAllObservers();
     	// Store created fields 
     	Skeleton.LogReturn();
     }
@@ -351,7 +351,7 @@ public class Game implements Serializable {
      */
     public void EndGame() {
     	Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName());
-    	System.out.println("A játék véget ért, az összes genetikai kódot megtanulta "+virologists.get(currentVirologistIndex).getName());
+    	System.out.println("A jï¿½tï¿½k vï¿½get ï¿½rt, az ï¿½sszes genetikai kï¿½dot megtanulta "+virologists.get(currentVirologistIndex).getName());
     	System.exit(0);
     	Skeleton.LogReturn();
     }
@@ -379,20 +379,20 @@ public class Game implements Serializable {
     	
     		try {
     			instance = (Game)ois.readObject();
-    			System.out.println("Sikeres betöltés!");
+    			System.out.println("Sikeres betï¿½ltï¿½s!");
     		}finally { // stream is open but write failed so close stream
     			ois.close();
     			fis.close();
     		}
     	
     	}catch(IOException e) { // stream could not be opened, so no need to close
-    		System.out.println("Sikertelen betöltés: "+e.getMessage());
+    		System.out.println("Sikertelen betï¿½ltï¿½s: "+e.getMessage());
     	}catch(ClassNotFoundException e) {
-    		System.out.println("Sikertelen betöltés, hibás file");
+    		System.out.println("Sikertelen betï¿½ltï¿½s, hibï¿½s file");
     	}
-    	instance.getCurrentVirologist().NotifyAll();
+    	instance.getCurrentVirologist().NotifyAllObservers();
     	for(Field f : instance.GetFields()) {
-    		f.NotifyAll();
+    		f.NotifyAllObservers();
     	}
     	Skeleton.LogReturn();
     }
@@ -403,23 +403,29 @@ public class Game implements Serializable {
     public void SaveGame() {
     	Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName());
     	try {
-    		String path = System.getProperty("user.dir")+"/saves/";
-    		File pathAsFile = new File(path);
-    		if (!Files.exists(Paths.get(path))) {
-    			pathAsFile.mkdir();
-    		}
+
+			String path = System.getProperty("user.dir")+"/saves/";
+			File pathAsFile = new File(path);
+				if (!Files.exists(Paths.get(path))) {
+					try{
+					pathAsFile.mkdir();
+					} catch (SecurityException  e) {
+						e.printStackTrace();
+					}
+				}
+
     		FileOutputStream fos = new FileOutputStream(new File(path+saveFile+".save"));
     		ObjectOutputStream oos = new ObjectOutputStream(fos);
     		try {
     			oos.writeObject(this);
-    			System.out.println("Sikeres mentés!");
+    			System.out.println("Sikeres mentï¿½s!");
     		}finally { // stream is open but write failed so close stream
     			oos.close();
     			fos.close();
     		}
     	
     	}catch(IOException e) { // stream could not be opened, so no need to close
-    		System.out.println("Sikertelen mentés: "+e.getMessage());
+    		System.out.println("Sikertelen mentï¿½s: "+e.getMessage());
     	}
     	Skeleton.LogReturn();
     }

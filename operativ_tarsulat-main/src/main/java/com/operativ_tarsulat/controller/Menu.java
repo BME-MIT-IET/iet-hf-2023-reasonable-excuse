@@ -97,7 +97,7 @@ public class Menu {
 			menuItems.clear();
 			for(Field neighbour : neighbours)
 				menuItems.addElement(new MenuItem(neighbour,neighbour.toString()));
-			menuItems.addElement(new MenuItem(null,"Mégse"));
+			menuItems.addElement(new MenuItem(null,"Mï¿½gse"));
 		});
 		int fieldIndex = waitInput();
 		if(fieldIndex == menuItems.getSize()-1)
@@ -137,7 +137,7 @@ public class Menu {
 		menuItems.clear();
 		for(Virologist v : avalibleVirologists)
 			menuItems.addElement(new MenuItem(v,v.getName()));
-		menuItems.addElement(new MenuItem(null,"Mégse"));
+		menuItems.addElement(new MenuItem(null,"Mï¿½gse"));
 		});
 		int virologistIndex = waitInput();
 		if(virologistIndex == menuItems.getSize()-1)
@@ -145,7 +145,7 @@ public class Menu {
 		// gears that can be stolen
 		List<Gear> gears = avalibleVirologists.get(virologistIndex).getGears();
 		if(gears.size()==0) {
-			System.out.println("Nincs a virológusnál semmilyen felszerelés");
+			System.out.println("Nincs a virolï¿½gusnï¿½l semmilyen felszerelï¿½s");
 			return;
 		}
 		// make the user choose a target
@@ -153,7 +153,7 @@ public class Menu {
 		menuItems.clear();
 		for(Gear gear : gears)
 			menuItems.addElement(new MenuItem(gear,gear.toString()));
-		menuItems.addElement(new MenuItem(null,"Mégse"));
+		menuItems.addElement(new MenuItem(null,"Mï¿½gse"));
 		});
 		int gearIndex = waitInput();
 		if(gearIndex == menuItems.getSize()-1)
@@ -177,7 +177,7 @@ public class Menu {
 		menuItems.clear();
 			for(Virologist v : avalibleVirologists)
 				menuItems.addElement(new MenuItem(v,v.getName()));
-			menuItems.addElement(new MenuItem(null,"Mégse"));
+			menuItems.addElement(new MenuItem(null,"Mï¿½gse"));
 		});
 		int virologistIndex = waitInput();
 		if(virologistIndex == menuItems.getSize()-1)
@@ -199,7 +199,7 @@ public class Menu {
 			menuItems.clear();
 			for(Virologist v : avalibleVirologists)
 				menuItems.addElement(new MenuItem(v,v.getName()));
-			menuItems.addElement(new MenuItem(null,"Mégse"));
+			menuItems.addElement(new MenuItem(null,"Mï¿½gse"));
 		});
 		int virologistIndex = waitInput();
 		if(virologistIndex == menuItems.getSize()-1)
@@ -213,7 +213,7 @@ public class Menu {
 			menuItems.clear();
 			for(Agent agent : agents)
 				menuItems.addElement(new MenuItem(agent,agent.toString())); 
-			menuItems.addElement(new MenuItem(null,"Mégse"));
+			menuItems.addElement(new MenuItem(null,"Mï¿½gse"));
 		});
 		int agentIndex = waitInput();
 		if(agentIndex == menuItems.getSize()-1)
@@ -230,7 +230,7 @@ public class Menu {
 		Virologist player = Game.GetInstance().getCurrentVirologist();
 		List<GeneticCode> geneticCodes = player.getGeneticCodes();
 		if(geneticCodes.size()==0) {
-			System.out.println("Nincs használható genetikai kód");
+			System.out.println("Nincs hasznï¿½lhatï¿½ genetikai kï¿½d");
 			return;
 		}
 
@@ -238,7 +238,7 @@ public class Menu {
 			menuItems.clear();
 			for(GeneticCode gc : geneticCodes)
 				menuItems.addElement(new MenuItem(gc,gc.toString())); 
-			menuItems.addElement(new MenuItem(null,"Mégse"));
+			menuItems.addElement(new MenuItem(null,"Mï¿½gse"));
 		});
 		int codeIndex = waitInput();
 		if(codeIndex == menuItems.getSize()-1)
@@ -262,7 +262,7 @@ public class Menu {
 			menuItems.clear();
 			for(Virologist v : avalibleVirologists)
 				menuItems.addElement(new MenuItem(v,v.getName()));
-			menuItems.addElement(new MenuItem(null,"Mégse"));
+			menuItems.addElement(new MenuItem(null,"Mï¿½gse"));
 		});
 		int virologistIndex = waitInput();
 		if(virologistIndex == menuItems.getSize()-1)
@@ -281,7 +281,7 @@ public class Menu {
 	 */
 	private void menuThread() {
 		while(true) {
-			showCommands(new MenuItem("playerSteps","Játékos léptetése"),new MenuItem("interact","Interakció a mezõvel"), new MenuItem("createAgent","Ágens létrehozása"),new MenuItem("useAgent","Ágens használata"),new MenuItem("stealMaterial","Anyag lopása"),new MenuItem("stealGear","Felszerelés lopása"),new MenuItem("attack","Támadás"),new MenuItem("endTurn","Kör befejezése"));
+			showCommands(new MenuItem("playerSteps","Jï¿½tï¿½kos lï¿½ptetï¿½se"),new MenuItem("interact","Interakciï¿½ a mezï¿½vel"), new MenuItem("createAgent","ï¿½gens lï¿½trehozï¿½sa"),new MenuItem("useAgent","ï¿½gens hasznï¿½lata"),new MenuItem("stealMaterial","Anyag lopï¿½sa"),new MenuItem("stealGear","Felszerelï¿½s lopï¿½sa"),new MenuItem("attack","Tï¿½madï¿½s"),new MenuItem("endTurn","Kï¿½r befejezï¿½se"));
 			// get the next command
 			int input = waitInput();
 			// evaluate the command
@@ -309,6 +309,8 @@ public class Menu {
 				break;
 			case "endTurn":
 				endTurn();
+				break;
+			default:
 				break;
 			}	
 		}

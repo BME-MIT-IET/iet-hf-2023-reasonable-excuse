@@ -48,12 +48,12 @@ public class FieldPanel extends JPanel implements Serializable {
      * @param nameArray names to set
      */
     public void setNames(String[] nameArray){
-        String names ="<html>";
+        StringBuffer names = new StringBuffer("<html>");
 
         for(int i =0;i<nameArray.length;i++)
-            names += nameArray[i] + "<br>";
+            names.append(nameArray[i]).append("<br>");
 
-        namesLabel.setText(names);
+        namesLabel.setText(names.toString());
     }
 
     /**
