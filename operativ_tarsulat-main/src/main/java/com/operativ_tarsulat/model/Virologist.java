@@ -144,7 +144,7 @@ public class Virologist extends Observable implements Steppable, Serializable {
         	v2.ReceiveAgentUse(a,this);
     		agentInventory.remove(a);
         }
-        NotifyAll();
+        NotifyAllObservers();
         Skeleton.LogReturn();
     }
 
@@ -183,7 +183,7 @@ public class Virologist extends Observable implements Steppable, Serializable {
             GeneticCodeCheckList gcc = new GeneticCodeCheckList();
             for(int i = 0; i<learnedGeneticCodes.size();i++)
                 learnedGeneticCodes.get(i).CheckList(gcc);
-            s.NotifyAll();
+            s.NotifyAllObservers();
             gcc.CheckEndCondition();
         }
         Skeleton.LogReturn();
@@ -203,12 +203,12 @@ public class Virologist extends Observable implements Steppable, Serializable {
                 temp = gears.get(i);
                 gears.remove(gears.get(i));
                 gears.add(g);
-                g.NotifyAll();
+                g.NotifyAllObservers();
                 Skeleton.LogReturn(temp.getClass().toString());
                 return temp;
             }
         gears.add(g);
-        g.NotifyAll();
+        g.NotifyAllObservers();
         Skeleton.LogReturn(null);
         return null;
     }
@@ -230,7 +230,7 @@ public class Virologist extends Observable implements Steppable, Serializable {
     public void AddGeneticCode(GeneticCode gc) {
         Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName(),gc.getClass().toString());
         learnedGeneticCodes.add(gc);
-        gc.NotifyAll();
+        gc.NotifyAllObservers();
         Skeleton.LogReturn();
     }
 
@@ -266,7 +266,7 @@ public class Virologist extends Observable implements Steppable, Serializable {
             activeAgents.get(i).HandleTurnStart(this);
             activeAgents.get(i).Step();
         }
-        this.NotifyAll();
+        this.NotifyAllObservers();
         Skeleton.LogReturn();
     }
 
@@ -295,7 +295,7 @@ public class Virologist extends Observable implements Steppable, Serializable {
             gears.remove(r);
             if(g != null) {
                 gears.add(g);
-                g.NotifyAll();
+                g.NotifyAllObservers();
             }
         }
         Skeleton.LogReturn("true");
@@ -373,7 +373,7 @@ public class Virologist extends Observable implements Steppable, Serializable {
         Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName(), Integer.toString(amino), Integer.toString(nucleo));
         this.aminoCount += amino;
         this.nucleoCount += nucleo;
-        this.NotifyAll();
+        this.NotifyAllObservers();
         Skeleton.LogReturn();
     }
 
@@ -417,10 +417,10 @@ public class Virologist extends Observable implements Steppable, Serializable {
         		nucleoCount-=nucleo;
         		Agent createdAgent = code.CreateInstance(this);
     	        agentInventory.add(createdAgent);
-                createdAgent.NotifyAll();
+                createdAgent.NotifyAllObservers();
         	}	        
         }
-        NotifyAll();
+        NotifyAllObservers();
         Skeleton.LogReturn();
     }
 
@@ -443,7 +443,7 @@ public class Virologist extends Observable implements Steppable, Serializable {
     	a.RemoveObservers();
     	a.AddObserver(a.CreateActiveObserver());
         activeAgents.add(a);
-        a.NotifyAll();
+        a.NotifyAllObservers();
         a.setVirologist(this);
         Skeleton.LogReturn();
     }
@@ -455,7 +455,7 @@ public class Virologist extends Observable implements Steppable, Serializable {
     public void AddAgentToInventory(Agent a) {
         Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName(),a.getClass().toString());
         agentInventory.add(a);
-        a.NotifyAll();
+        a.NotifyAllObservers();
         a.setVirologist(this);
         Skeleton.LogReturn();
     }

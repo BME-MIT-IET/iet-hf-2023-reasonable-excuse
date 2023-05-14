@@ -4,8 +4,6 @@ import com.operativ_tarsulat.model.*;
 
 import java.io.Serializable;
 
-import javax.swing.*;
-
 public class VirologistObserver implements Observer, Serializable {
     /**
      * Observed object.
@@ -80,16 +78,16 @@ public class VirologistObserver implements Observer, Serializable {
 
 
         for (Gear g : subject.getGears()) {
-            g.NotifyAll();
+            g.NotifyAllObservers();
         }
         for (Agent a : subject.getActiveAgent()) {
-            a.NotifyAll();
+            a.NotifyAllObservers();
         }
         for (Agent a : subject.getAgentInventory()) {
-            a.NotifyAll();
+            a.NotifyAllObservers();
         }
         for (GeneticCode g : subject.getGeneticCodes()) {
-            g.NotifyAll();
+            g.NotifyAllObservers();
         }
 
         MainWindow.getInstance().getActualPlayerLabel().setText(subject.getName());

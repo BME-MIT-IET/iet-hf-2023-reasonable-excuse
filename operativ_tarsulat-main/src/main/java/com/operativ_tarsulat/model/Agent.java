@@ -2,12 +2,15 @@ package com.operativ_tarsulat.model;
 
 import java.io.Console;
 import java.io.Serializable;
+import java.util.Random;
 
 import com.operativ_tarsulat.view.Observer;
 
 public abstract class Agent extends Observable implements Steppable, Effect,Serializable {
     public int Duration;
     private Virologist virologist;
+
+    protected static Random rand = new Random();
 
     /**
      * Creates a blank Agent
