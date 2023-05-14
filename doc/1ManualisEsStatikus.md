@@ -74,3 +74,5 @@ Github-on használjuk a pull-request funkciót az új commitok hozzáadása utá
 - Találtunk üres catch ágakat, amikbe érdemes lenne valamilyen hibakezelést írni. Itt lett hagyva auto generált TODO is.
 
 ![Catch](Kepernyokepek/1ManualisEsStatikus_kepek/error_handling.png)
+
+A többi nagyobb kódrészeket, amiket átvizsgáltunk, azokban nem találtunk jelentős/súlyos hibákat.
