@@ -27,9 +27,9 @@ public class City extends Field implements Serializable {
 	 * @return The description of the class
 	 */
 	public String toString(){
-		String s = new String();
+		StringBuffer s = new StringBuffer();
 		for (Building b:buildings){
-			s = s+b.toString()+" ";
+			s.append(b.toString()).append(" ");
 		}
 		return "City, buildings in the city: "+s+"virologists in the city: "+super.toString();
 	}

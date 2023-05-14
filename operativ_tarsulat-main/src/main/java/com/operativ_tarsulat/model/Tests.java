@@ -3,10 +3,7 @@ package com.operativ_tarsulat.model;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Tests {
 
@@ -14,7 +11,7 @@ public class Tests {
 		
 		int counter = 0;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		while(true&&counter<10) {
+		while(counter < 10) {
 			System.out.println("Adjon meg egy parancsot!");
 			String command = "";
 			try {
@@ -23,55 +20,58 @@ public class Tests {
 			{
 				e.printStackTrace();
 			}
-			switch(command) {
-			case "loadGame": 
-				LoadGameTest();
-				break;
-			case "exitGame":
-				ExitGameTest();
-				break;
-			case "startGame":
-				StartGameTest();
-				break;
-			case "playerSteps":
-				PlayerStepsTest();
-				break;
-			case "learnGeneticCode":
-				LearnGeneticCodeTest();
-				break;
-			case "dieVirologist":
-				PlayerDiesTest();
-				break;
-			case "pickUpMaterial":
-				PickUpMaterialTest();
-				break;
-			case "stealGear":
-				StealGearTest();
-				break;
-			case "createAgent":
-				CreateAgentTest();
-				break;
-			case "useAgent":
-				UseAgentTest();
-				break;
-			case "stealMaterial":
-				StealMaterialTest();
-				break;
-			
-				
-			
-			default: System.out.println("Nem ismert parancs!");
+			if(!Objects.isNull(command)) {
+				switch (command) {
+					case "loadGame":
+						LoadGameTest();
+						break;
+					case "exitGame":
+						ExitGameTest();
+						break;
+					case "startGame":
+						StartGameTest();
+						break;
+					case "playerSteps":
+						PlayerStepsTest();
+						break;
+					case "learnGeneticCode":
+						LearnGeneticCodeTest();
+						break;
+					case "dieVirologist":
+						PlayerDiesTest();
+						break;
+					case "pickUpMaterial":
+						PickUpMaterialTest();
+						break;
+					case "stealGear":
+						StealGearTest();
+						break;
+					case "createAgent":
+						CreateAgentTest();
+						break;
+					case "useAgent":
+						UseAgentTest();
+						break;
+					case "stealMaterial":
+						StealMaterialTest();
+						break;
+					default:
+						System.out.println("Nem ismert parancs!");
+				}
 			}
 			counter++;
 		}
 		
 		
 	}
-	
 	static void LoadGameTest()
-	{		
-		BufferedReader lr = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("Játék neve: ");
+	{
+		BufferedReader lr = null;
+
+		while(Objects.isNull(lr)){
+			lr = new BufferedReader(new InputStreamReader(System.in));
+		}
+		System.out.print("Jï¿½tï¿½k neve: ");
 		String gameName = "";
 		try {
 			gameName = lr.readLine();
@@ -85,7 +85,7 @@ public class Tests {
 	static void ExitGameTest()
 	{
 		BufferedReader lr = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("El akarod menteni a fájlt?(I/N) ");
+		System.out.print("El akarod menteni a fï¿½jlt?(I/N) ");
 		String answer = "";
 		try {
 			answer = lr.readLine();
@@ -93,7 +93,7 @@ public class Tests {
 			e.printStackTrace();
 		}
 		if(answer.equals("I"))Game.GetInstance().SaveGame();
-		System.out.println("Sikeres kilépés!");
+		System.out.println("Sikeres kilï¿½pï¿½s!");
 		Game.GetInstance().ExitGame();
 		
 		
@@ -106,19 +106,22 @@ public class Tests {
 		String fileName = "";
 		String []players = new String [10];
 		try {
-			System.out.print("Fájlnév: ");
+			System.out.print("Fï¿½jlnï¿½v: ");
 			fileName = lr.readLine();
 			System.out.print("Seed: ");
 			seed = Integer.parseInt(lr.readLine());
-			System.out.print("Játékosok: ");
+			System.out.print("Jï¿½tï¿½kosok: ");
+
 			players = lr.readLine().split(" ");
-			
+
+
+
 		} catch (IOException e) {
-			System.out.println("Sikertelen pálya betöltés!");
+			System.out.println("Sikertelen pï¿½lya betï¿½ltï¿½s!");
 			e.printStackTrace();
 		}
 		Game.GetInstance().StartGame(fileName, (seed), players);
-		System.out.println("Sikeres pálya betöltés");
+		System.out.println("Sikeres pï¿½lya betï¿½ltï¿½s");
 		
 	}
 	
@@ -127,7 +130,7 @@ public class Tests {
 		BufferedReader lr = new BufferedReader(new InputStreamReader(System.in));
 		String name = "";
 		try {
-			System.out.println("Virológus: ");
+			System.out.println("Virolï¿½gus: ");
 			name = lr.readLine();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -145,7 +148,7 @@ public class Tests {
 		f3.AddNeighbour(f);
 		f3.AddNeighbour(f2);
 		List<Field> neigh = f.GetNeighbours();
-		System.out.print("Elérhetõ mezõ: ");
+		System.out.print("Elï¿½rhetï¿½ mezï¿½: ");
 		int a = 1;
 		for(int i =0;i<neigh.size();i++)
 		{
@@ -166,14 +169,14 @@ public class Tests {
 			Virologist[] vir = neigh.get(a-1).GetVirologists();
 			if(vir[i].getName().equals(name)) atment = true;
 		}
-		if(atment)System.out.println(name+" sikerült elmozdulnia");
-		else System.out.println(name+" nem sikerült elmozdulnia");
+		if(atment)System.out.println(name+" sikerï¿½lt elmozdulnia");
+		else System.out.println(name+" nem sikerï¿½lt elmozdulnia");
 		v.InteractWithField();
 		if(f2.getHasBearVirus())
 		{
-			System.out.println(name +" Megfertõzõdött medve vírussal");
+			System.out.println(name +" Megfertï¿½zï¿½dï¿½tt medve vï¿½russal");
 		}
-		else System.out.println("Nem fertõzõdött meg medvevírussal");
+		else System.out.println("Nem fertï¿½zï¿½dï¿½tt meg medvevï¿½russal");
 		
 		
 		
@@ -184,7 +187,7 @@ public class Tests {
 		BufferedReader lr = new BufferedReader(new InputStreamReader(System.in));
 		String name = "";
 		try {
-			System.out.println("Virológus: ");
+			System.out.println("Virolï¿½gus: ");
 			name = lr.readLine();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -202,7 +205,7 @@ public class Tests {
 		int ujNucleoHely = v.GetVacantNucleo();
 		if(ujAminoHely<regiAminoHely||ujNucleoHely<regiNucleoHely)
 		{
-			System.out.println("Sikerült felvenni: "+((regiAminoHely-ujAminoHely)+(regiNucleoHely-ujNucleoHely))+" anyagot");
+			System.out.println("Sikerï¿½lt felvenni: "+((regiAminoHely-ujAminoHely)+(regiNucleoHely-ujNucleoHely))+" anyagot");
 		}
 		
 	}
@@ -210,7 +213,7 @@ public class Tests {
 	static void LearnGeneticCodeTest()
 	{
 		BufferedReader lr = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("Virológus: ");
+		System.out.print("Virolï¿½gus: ");
 		String name = "";
 		try {
 			name = lr.readLine();
@@ -225,14 +228,14 @@ public class Tests {
 		v.InteractWithField();
 		if(v.getGeneticCodes().size()>geneticCodes)
 		{
-			System.out.println("Sikerült megtanulni!");
+			System.out.println("Sikerï¿½lt megtanulni!");
 			if(v.getGeneticCodes().size()==4) 
 			{
-				System.out.println(name+" megnyerte a játékot!");
+				System.out.println(name+" megnyerte a jï¿½tï¿½kot!");
 				Game.GetInstance().EndGame();
 			}	
 		}
-		else System.out.println("Nem sikerült megtanulni!");
+		else System.out.println("Nem sikerï¿½lt megtanulni!");
 		
 	}
 	
@@ -242,14 +245,14 @@ public class Tests {
 
 		Axe axe = new Axe();
 		Field f = new FreeField();
-		System.out.println("Virológus akin a fejszét használták: ");
+		System.out.println("Virolï¿½gus akin a fejszï¿½t hasznï¿½ltï¿½k: ");
 		name = scan.nextLine();
 		Virologist v = new Virologist(name);
 		v.SetField(f);
 
 		axe.Attack(v);
 
-		if(Arrays.asList(f.GetVirologists()).contains(v)) System.out.println(v.getName() + " nem tûnt el.");
+		if(Arrays.asList(f.GetVirologists()).contains(v)) System.out.println(v.getName() + " nem tï¿½nt el.");
 		else if(!Arrays.asList(f.GetVirologists()).contains(v)) System.out.println(v.getName() +" meghalt");
 
 	}
@@ -298,13 +301,15 @@ public class Tests {
 				if(v2.GetGear(new Axe()) == null)
 					System.out.println("Nem sikerult felszerelest lopni.");
 				break;
+			default:
+				break;
 		}
 	}
 
 	static void CreateAgentTest()
 	{
 		BufferedReader lr = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("Virológus neve: ");
+		System.out.print("Virolï¿½gus neve: ");
 		String name = "";
 		try {
 			name = lr.readLine();
@@ -334,25 +339,27 @@ public class Tests {
 		{
 		case 1:
 			v.CreateAgent(v.getGeneticCodes().get(0));
-			if(v.getAgentInventory().size()>regiGcDB) System.out.println("Sikerült Amnesia agent készíteni");
-			else System.out.println("Nem sikerült agent készíteni");
+			if(v.getAgentInventory().size()>regiGcDB) System.out.println("Sikerï¿½lt Amnesia agent kï¿½szï¿½teni");
+			else System.out.println("Nem sikerï¿½lt agent kï¿½szï¿½teni");
 			break;
 		case 2:
 			v.CreateAgent(v.getGeneticCodes().get(1));
-			if(v.getAgentInventory().size()>regiGcDB) System.out.println("Sikerült Dance agent készíteni");
-			else System.out.println("Nem sikerült agent készíteni");
+			if(v.getAgentInventory().size()>regiGcDB) System.out.println("Sikerï¿½lt Dance agent kï¿½szï¿½teni");
+			else System.out.println("Nem sikerï¿½lt agent kï¿½szï¿½teni");
 			break;
 		case 3:
 			v.CreateAgent(v.getGeneticCodes().get(2));
-			if(v.getAgentInventory().size()>regiGcDB) System.out.println("Sikerült Paralyze agent készíteni");
-			else System.out.println("Nem sikerült agent készíteni");
+			if(v.getAgentInventory().size()>regiGcDB) System.out.println("Sikerï¿½lt Paralyze agent kï¿½szï¿½teni");
+			else System.out.println("Nem sikerï¿½lt agent kï¿½szï¿½teni");
 			break;
 		case 4:
 			v.CreateAgent(v.getGeneticCodes().get(3));
-			if(v.getAgentInventory().size()>regiGcDB) System.out.println("Sikerült Protection agent készíteni");
-			else System.out.println("Nem sikerült agent készíteni");
+			if(v.getAgentInventory().size()>regiGcDB) System.out.println("Sikerï¿½lt Protection agent kï¿½szï¿½teni");
+			else System.out.println("Nem sikerï¿½lt agent kï¿½szï¿½teni");
 			break;
 		case 0: System.out.println("Nem jo valasz");
+			break;
+		default:
 			break;
 		}
 		
@@ -389,30 +396,32 @@ public class Tests {
 			v.AddGeneticCode(new AmnesiaGeneticCode());
 			v.CreateAgent(v.getGeneticCodes().get(0));
 			v.UseAgent(v2, v.getAgentInventory().get(0));
-			System.out.println("Sikeresen használva lett az Amnesia ágens a "+vn2+" nevû virológuson");
+			System.out.println("Sikeresen hasznï¿½lva lett az Amnesia ï¿½gens a "+vn2+" nevï¿½ virolï¿½guson");
 			break;
 		case 2:
 			v.AddGeneticCode(new DanceGeneticCode());
 			v.CreateAgent(v.getGeneticCodes().get(0));
 			v.UseAgent(v2, v.getAgentInventory().get(0));
-			System.out.println("Sikeresen használva lett az Dance ágens a "+vn2+" nevû virológuson");
+			System.out.println("Sikeresen hasznï¿½lva lett az Dance ï¿½gens a "+vn2+" nevï¿½ virolï¿½guson");
 			
 			break;
 		case 3:
 			v.AddGeneticCode(new ParalyzeGeneticCode());
 			v.CreateAgent(v.getGeneticCodes().get(0));
 			v.UseAgent(v2, v.getAgentInventory().get(0));
-			System.out.println("Sikeresen használva lett az Paralyze ágens a "+vn2+" nevû virológuson");
+			System.out.println("Sikeresen hasznï¿½lva lett az Paralyze ï¿½gens a "+vn2+" nevï¿½ virolï¿½guson");
 			
 			break;
 		case 4:
 			v.AddGeneticCode(new ProtectionGeneticCode());
 			v.CreateAgent(v.getGeneticCodes().get(0));
 			v.UseAgent(v2, v.getAgentInventory().get(0));
-			System.out.println("Sikeresen használva lett az Protection ágens a "+vn2+" nevû virológuson");
+			System.out.println("Sikeresen hasznï¿½lva lett az Protection ï¿½gens a "+vn2+" nevï¿½ virolï¿½guson");
 			 
 			break;
 		case 0: System.out.println("Nem jo valasz");
+			break;
+		default:
 			break;
 		}
 	}

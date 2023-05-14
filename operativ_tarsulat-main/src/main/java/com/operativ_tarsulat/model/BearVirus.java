@@ -101,7 +101,6 @@ public class BearVirus extends Agent implements Serializable {
     public void HandleTurnStart(Virologist v) {
         Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName(), v.getName());
         List<Field> neighbours = v.GetField().GetNeighbours();
-        Random rand = new Random();
         if (neighbours.size() == 1) {
             v.Move(neighbours.get(0));
         } else {

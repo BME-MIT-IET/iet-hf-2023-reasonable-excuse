@@ -32,11 +32,11 @@ public class Skeleton {
 				if(num<options.length&&num>=0) {
 					return num;
 				}else {
-					System.out.println("Kérem a megadott opciókból válasszon");
+					System.out.println("Kï¿½rem a megadott opciï¿½kbï¿½l vï¿½lasszon");
 				}
 
 			}catch(NumberFormatException e) {
-				System.out.println("Kérem a megadott opciókból válasszon");				
+				System.out.println("Kï¿½rem a megadott opciï¿½kbï¿½l vï¿½lasszon");				
 			}catch(IOException e) {
 				e.printStackTrace();
 			}
@@ -78,10 +78,10 @@ public class Skeleton {
 				if(num>=min&&num<=max) {
 					return num;
 				}else {
-					System.out.println("Kérem a keret között adjon meg számot! ("+min+"-"+max+")");
+					System.out.println("Kï¿½rem a keret kï¿½zï¿½tt adjon meg szï¿½mot! ("+min+"-"+max+")");
 				}
 			}catch(NumberFormatException e) {
-				System.out.println("Számot adjon meg");				
+				System.out.println("Szï¿½mot adjon meg");				
 			}catch(IOException e) {
 				e.printStackTrace();
 			}
@@ -140,7 +140,7 @@ public class Skeleton {
 	 */
 	public static void main(String[] args) {
 		while(true) {
-			int testCase = AskQuestion("Melyik tesztet szeretnéd futtatni?", new String[]{"Kilépés","Játékos lép","Genetikai kód tanulása", "Felszerelés felvétele", "Anyag felvétele", "Ágens készítése","Játék mentése", "Játék betöltése", "Játék indítása","Ágens kenése", "Anyagkészlet lopása", "Felszerelés lopása", "Kör kezdete", "Kör kezdete tánc ágensel","Kör kezdete bénító ágensel" });
+			int testCase = AskQuestion("Melyik tesztet szeretnï¿½d futtatni?", new String[]{"Kilï¿½pï¿½s","Jï¿½tï¿½kos lï¿½p","Genetikai kï¿½d tanulï¿½sa", "Felszerelï¿½s felvï¿½tele", "Anyag felvï¿½tele", "ï¿½gens kï¿½szï¿½tï¿½se","Jï¿½tï¿½k mentï¿½se", "Jï¿½tï¿½k betï¿½ltï¿½se", "Jï¿½tï¿½k indï¿½tï¿½sa","ï¿½gens kenï¿½se", "Anyagkï¿½szlet lopï¿½sa", "Felszerelï¿½s lopï¿½sa", "Kï¿½r kezdete", "Kï¿½r kezdete tï¿½nc ï¿½gensel","Kï¿½r kezdete bï¿½nï¿½tï¿½ ï¿½gensel" });
 			switch(testCase) {
 			case 0: // Exits the program
 				Game.GetInstance().ExitGame();
@@ -187,12 +187,14 @@ public class Skeleton {
 			case 14: // Runs start turn with paralyze agent test
 				StartTurnWithParalyzeAgentTest(); 
 				break;
+			default:
+				break;
 			}
 		}
 	}
 	
 	/**
-	 * Új kör bénító ágensel tesztelése
+	 * ï¿½j kï¿½r bï¿½nï¿½tï¿½ ï¿½gensel tesztelï¿½se
 	 */
 	private static void StartTurnWithParalyzeAgentTest() {
 		Virologist v1 = new Virologist();
@@ -210,7 +212,7 @@ public class Skeleton {
 	}
 
 	/**
-	 * Új kör táncóló ágensel tesztelése
+	 * ï¿½j kï¿½r tï¿½ncï¿½lï¿½ ï¿½gensel tesztelï¿½se
 	 */
 	private static void StartTurnWithDanceAgentTest() {
 		Virologist v1 = new Virologist();
@@ -245,7 +247,7 @@ public class Skeleton {
 	}
 
 	/**
-	 * Új kör indításának tesztelése
+	 * ï¿½j kï¿½r indï¿½tï¿½sï¿½nak tesztelï¿½se
 	 */
 	private static void StartTurnTest() {
 		Virologist v1 = new Virologist();
@@ -257,15 +259,15 @@ public class Skeleton {
 		g.AddVirologist(v1);
 		g.AddVirologist(v2);
 				
-		if(AskYesNoQuestion("Hat a soron következõ virológusra amnézia vírus?")) {
-			int length = AskQuestion("Hány körig hat még a vírus?",1,5);
+		if(AskYesNoQuestion("Hat a soron kï¿½vetkezï¿½ virolï¿½gusra amnï¿½zia vï¿½rus?")) {
+			int length = AskQuestion("Hï¿½ny kï¿½rig hat mï¿½g a vï¿½rus?",1,5);
 			AmnesiaVirus a = new AmnesiaVirus();
 			a.SetDuration(length);
 			v2.AddAgent(a);
 		}
 		
-		if(AskYesNoQuestion("Hat a soron következõ virológusra védelmi vakcina?")) {
-			int length = AskQuestion("Hány körig hat még a vakcina?",1,5);
+		if(AskYesNoQuestion("Hat a soron kï¿½vetkezï¿½ virolï¿½gusra vï¿½delmi vakcina?")) {
+			int length = AskQuestion("Hï¿½ny kï¿½rig hat mï¿½g a vakcina?",1,5);
 			ProtectionVaccine a = new ProtectionVaccine();
 			a.SetDuration(length);
 			v2.AddAgent(a);
@@ -275,7 +277,7 @@ public class Skeleton {
 	}
 
 	/**
-	 * Felszerelés lopásának tesztelése
+	 * Felszerelï¿½s lopï¿½sï¿½nak tesztelï¿½se
 	 */
 	private static void StealGearTest() {
 		Virologist v1 = new Virologist();
@@ -286,16 +288,16 @@ public class Skeleton {
 		v1.SetField(f);
 		v2.SetField(f);
 		
-		if(AskYesNoQuestion("Le van bénulva a lopó virológus?")) {
+		if(AskYesNoQuestion("Le van bï¿½nulva a lopï¿½ virolï¿½gus?")) {
 			v1.AddAgent(new ParalyzeVirus());
 		}
-		if(AskYesNoQuestion("Le van bénulva az \"áldozat\" virológus?")) {
+		if(AskYesNoQuestion("Le van bï¿½nulva az \"ï¿½ldozat\" virolï¿½gus?")) {
 			v2.AddAgent(new ParalyzeVirus());	
 		}
-		int gearType =AskQuestion("Milyen tárgyat lopjon a virológus?",new String[] {"Kesztyû","Zsák","Köpeny"});
+		int gearType =AskQuestion("Milyen tï¿½rgyat lopjon a virolï¿½gus?",new String[] {"Kesztyï¿½","Zsï¿½k","Kï¿½peny"});
 		Gear gear =  (new Gear[] {new Gloves(),new Bag(),new ProtectiveCape()})[gearType];
 		v2.GetGear(gear);
-		if(AskYesNoQuestion("Van már ilyen felszerelés a lopó virológusnál?")) {
+		if(AskYesNoQuestion("Van mï¿½r ilyen felszerelï¿½s a lopï¿½ virolï¿½gusnï¿½l?")) {
 			v1.GetGear((new Gear[] {new Gloves(),new Bag(),new ProtectiveCape()})[gearType]);
 		}
 		v1.Steal(v2, gear);
@@ -303,7 +305,7 @@ public class Skeleton {
 	}
 	
 	/**
-	 * Anyag lopásának tesztelsée
+	 * Anyag lopï¿½sï¿½nak tesztelsï¿½e
 	 */
 	private static void StealMaterialTest() {
 		Virologist v1 = new Virologist();
@@ -314,23 +316,23 @@ public class Skeleton {
 		v1.SetField(f);
 		v2.SetField(f);
 		
-		if(AskYesNoQuestion("Le van bénulva a lopó virológus?")) {
+		if(AskYesNoQuestion("Le van bï¿½nulva a lopï¿½ virolï¿½gus?")) {
 			v1.AddAgent(new ParalyzeVirus());
 		}
-		if(AskYesNoQuestion("Le van bénulva az \"áldozat\" virológus?")) {
+		if(AskYesNoQuestion("Le van bï¿½nulva az \"ï¿½ldozat\" virolï¿½gus?")) {
 			v2.AddAgent(new ParalyzeVirus());	
 		}
-		if(AskYesNoQuestion("Rendelkezik zsákkal a lopó virológus?")) {
+		if(AskYesNoQuestion("Rendelkezik zsï¿½kkal a lopï¿½ virolï¿½gus?")) {
 			v1.GetGear(new Bag());
 		}
-		int aminoVir = AskQuestion("Mennyi amino található a lopó virológusnál?"); 
-		int nucleoVir = AskQuestion("Mennyi nucleo található a lopó virológusnál?");	
+		int aminoVir = AskQuestion("Mennyi amino talï¿½lhatï¿½ a lopï¿½ virolï¿½gusnï¿½l?"); 
+		int nucleoVir = AskQuestion("Mennyi nucleo talï¿½lhatï¿½ a lopï¿½ virolï¿½gusnï¿½l?");	
 		
 		v1.SetAmino(aminoVir);
 		v1.SetNucleo(nucleoVir);
 		
-		int aminoVir2 = AskQuestion("Mennyi amino található az \"áldozat\" virológusnál?"); 
-		int nucleoVir2 = AskQuestion("Mennyi nucleo található az \\\"áldozat\\\" virológusnál?");	
+		int aminoVir2 = AskQuestion("Mennyi amino talï¿½lhatï¿½ az \"ï¿½ldozat\" virolï¿½gusnï¿½l?"); 
+		int nucleoVir2 = AskQuestion("Mennyi nucleo talï¿½lhatï¿½ az \\\"ï¿½ldozat\\\" virolï¿½gusnï¿½l?");	
 		
 		v2.SetAmino(aminoVir2);
 		v2.SetNucleo(nucleoVir2);
@@ -339,7 +341,7 @@ public class Skeleton {
 	}
 
 	/**
-	 * Ágens kenésének tesztelése
+	 * ï¿½gens kenï¿½sï¿½nek tesztelï¿½se
 	 */
 	private static void UseAgentTest() {
 		Virologist v1= new Virologist();
@@ -347,17 +349,17 @@ public class Skeleton {
 		FreeField f = new FreeField();
 		v1.SetField(f);
 		v2.SetField(f);
-		int agent = AskQuestion("Milyen ágenst kenjen a virológus?",new String[] {"Bénító","Amnézia","Védelmi","Táncoló"});
-		if(AskYesNoQuestion("Le van bénulva a virológus?")) {
+		int agent = AskQuestion("Milyen ï¿½genst kenjen a virolï¿½gus?",new String[] {"Bï¿½nï¿½tï¿½","Amnï¿½zia","Vï¿½delmi","Tï¿½ncolï¿½"});
+		if(AskYesNoQuestion("Le van bï¿½nulva a virolï¿½gus?")) {
 			v1.AddAgent(new ParalyzeVirus());			
 		}
-		if(AskYesNoQuestion("A másik virólógusra hat védelmi vakcina?")) {
+		if(AskYesNoQuestion("A mï¿½sik virï¿½lï¿½gusra hat vï¿½delmi vakcina?")) {
 			v2.AddAgent(new ProtectionVaccine());			
 		}
-		if(AskYesNoQuestion("A másik virólóguson van védelmi köpeny?")) {
+		if(AskYesNoQuestion("A mï¿½sik virï¿½lï¿½guson van vï¿½delmi kï¿½peny?")) {
 			v2.GetGear(new ProtectiveCape());			
 		}
-		if(AskYesNoQuestion("A másik virólóguson van kesztyû?")) {
+		if(AskYesNoQuestion("A mï¿½sik virï¿½lï¿½guson van kesztyï¿½?")) {
 			v2.GetGear(new Gloves());				
 		}
 		Agent[] agents = new Agent[] {new ParalyzeVirus(),new AmnesiaVirus(), new ProtectionVaccine(), new DanceVirus()};
@@ -366,14 +368,14 @@ public class Skeleton {
 	}
 	
 	/**
-	 * Játék indításának tesztelése
+	 * Jï¿½tï¿½k indï¿½tï¿½sï¿½nak tesztelï¿½se
 	 */
 	private static void StartGameTest() {
-		Game.GetInstance().StartGame("sampleGame", 100,new String[] {"Virológus 1","Virológus2","Virológus3"});
+		Game.GetInstance().StartGame("sampleGame", 100,new String[] {"Virolï¿½gus 1","Virolï¿½gus2","Virolï¿½gus3"});
 	}
 
 	/**
-	 * Játék betöltésének tesztelése	
+	 * Jï¿½tï¿½k betï¿½ltï¿½sï¿½nek tesztelï¿½se	
 	 */
 	private static void SaveGameTest() {
 		Game.Clear();
@@ -388,30 +390,30 @@ public class Skeleton {
 	}
 	
 	/**
-	 * Játék betöltésének tesztelése	
+	 * Jï¿½tï¿½k betï¿½ltï¿½sï¿½nek tesztelï¿½se	
 	 */
 	private static void LoadGameTest() {
 		Game.GetInstance().LoadGame("sampleGame");		
 	}
 
 	/**
-	 * Ágens létrehozásának tesztelése
+	 * ï¿½gens lï¿½trehozï¿½sï¿½nak tesztelï¿½se
 	 */
 	private static void CreateAgentTest() {
 		Virologist v = new Virologist();
-		if(AskYesNoQuestion("Le van bénulva a virológus?")) {
+		if(AskYesNoQuestion("Le van bï¿½nulva a virolï¿½gus?")) {
 			v.AddAgent(new ParalyzeVirus());
 		}
-		if(AskYesNoQuestion("Hat a virológusra amnézia vírus?")) {
+		if(AskYesNoQuestion("Hat a virolï¿½gusra amnï¿½zia vï¿½rus?")) {
 			v.AddAgent(new AmnesiaVirus());
 		}
-		int codeToUse = AskQuestion("Melyik ágenst hozza létre a virológus?",new String[] {"Bénító","Amnézia","Védelmi","Táncoló"});
+		int codeToUse = AskQuestion("Melyik ï¿½genst hozza lï¿½tre a virolï¿½gus?",new String[] {"Bï¿½nï¿½tï¿½","Amnï¿½zia","Vï¿½delmi","Tï¿½ncolï¿½"});
 		
 		GeneticCode c = new GeneticCode[] {new ParalyzeGeneticCode(),new AmnesiaGeneticCode(),new ProtectionGeneticCode(),new DanceGeneticCode()}[codeToUse];
 		v.AddGeneticCode(c);
 		
-		int aminoVir = AskQuestion("Mennyi amino található a virológusnál?"); 
-		int nucleoVir = AskQuestion("Mennyi nucleo található a virológusnál?");	
+		int aminoVir = AskQuestion("Mennyi amino talï¿½lhatï¿½ a virolï¿½gusnï¿½l?"); 
+		int nucleoVir = AskQuestion("Mennyi nucleo talï¿½lhatï¿½ a virolï¿½gusnï¿½l?");	
 		
 		v.SetAmino(aminoVir);
 		v.SetNucleo(nucleoVir);
@@ -420,24 +422,24 @@ public class Skeleton {
 	}
 
 	///
-	///	Anyag felvételének tesztelése
+	///	Anyag felvï¿½telï¿½nek tesztelï¿½se
 	///
 	private static void PickUpMaterialTest() {
 		Virologist v = new Virologist();
 		City c = new City();
-		if(AskYesNoQuestion("Le van bénulva a virológus?")) {
+		if(AskYesNoQuestion("Le van bï¿½nulva a virolï¿½gus?")) {
 			v.AddAgent(new ParalyzeVirus());
 		}	
-		int amino = AskQuestion("Mennyi amino található a raktárban?"); 
-		int nucleo = AskQuestion("Mennyi nucleo található a raktárban?");	
+		int amino = AskQuestion("Mennyi amino talï¿½lhatï¿½ a raktï¿½rban?"); 
+		int nucleo = AskQuestion("Mennyi nucleo talï¿½lhatï¿½ a raktï¿½rban?");	
 		
-		int aminoVir = AskQuestion("Mennyi amino található a virológusnál?"); 
-		int nucleoVir = AskQuestion("Mennyi nucleo található a virológusnál?");	
+		int aminoVir = AskQuestion("Mennyi amino talï¿½lhatï¿½ a virolï¿½gusnï¿½l?"); 
+		int nucleoVir = AskQuestion("Mennyi nucleo talï¿½lhatï¿½ a virolï¿½gusnï¿½l?");	
 		
 		v.SetAmino(aminoVir);
 		v.SetNucleo(nucleoVir);
 		
-		if(AskYesNoQuestion("Van a virológusnál zsák?")) {
+		if(AskYesNoQuestion("Van a virolï¿½gusnï¿½l zsï¿½k?")) {
 			v.GetGear(new Bag());
 		}
 		
@@ -451,7 +453,7 @@ public class Skeleton {
 	}
 
 	///
-	/// Játékos lépésének tesztelése
+	/// Jï¿½tï¿½kos lï¿½pï¿½sï¿½nek tesztelï¿½se
 	///
 	public static void VirologistMoveTest() {
 		Virologist v = new Virologist("v");
@@ -459,7 +461,7 @@ public class Skeleton {
 		Field f2 = new FreeField();
 
 		v.SetField(f);
-		if(AskYesNoQuestion("Legyen bénító ágens a varázslón?")) {
+		if(AskYesNoQuestion("Legyen bï¿½nï¿½tï¿½ ï¿½gens a varï¿½zslï¿½n?")) {
 			ParalyzeVirus p = new ParalyzeVirus();
 			v.AddAgent(p);
 		}
@@ -469,36 +471,36 @@ public class Skeleton {
 	}
 	
 	///
-	/// Genetikai kód tanulásának tesztelése
+	/// Genetikai kï¿½d tanulï¿½sï¿½nak tesztelï¿½se
 	///
 	private static void LearnGeneticCodeTest() {
-		Virologist v = new Virologist("tanuló");
+		Virologist v = new Virologist("tanulï¿½");
 		Laboratory l = new Laboratory();
 		Game.GetInstance().Clear();
 		Game.GetInstance().AddVirologist(v);
 		v.SetField(l);
-		if(AskYesNoQuestion("Le van bénulva a virológus?")) {
+		if(AskYesNoQuestion("Le van bï¿½nulva a virolï¿½gus?")) {
 			v.AddAgent(new ParalyzeVirus());
 		}	
-		int codeToLearn = AskQuestion("Melyik genetikai kódot tanulja meg a virológus?",new String[] {"Bénító","Amnézia","Védelmi","Táncoló"});
+		int codeToLearn = AskQuestion("Melyik genetikai kï¿½dot tanulja meg a virolï¿½gus?",new String[] {"Bï¿½nï¿½tï¿½","Amnï¿½zia","Vï¿½delmi","Tï¿½ncolï¿½"});
 		l.SetGeneticCode(new GeneticCode[] {new ParalyzeGeneticCode(),new AmnesiaGeneticCode(),new ProtectionGeneticCode(),new DanceGeneticCode()}[codeToLearn]);
 		int i = 0;
-		if(codeToLearn!=0&&AskYesNoQuestion("A virológus már megtanulta a bénító genetikai kódot")) {
+		if(codeToLearn!=0&&AskYesNoQuestion("A virolï¿½gus mï¿½r megtanulta a bï¿½nï¿½tï¿½ genetikai kï¿½dot")) {
 			ParalyzeGeneticCode p = new ParalyzeGeneticCode();
 			v.AddGeneticCode(p);
 			i++;
 		}
-		if(codeToLearn!=1&&AskYesNoQuestion("A virológus már megtanulta az amnézia genetikai kódot")) {
+		if(codeToLearn!=1&&AskYesNoQuestion("A virolï¿½gus mï¿½r megtanulta az amnï¿½zia genetikai kï¿½dot")) {
 			AmnesiaGeneticCode p = new AmnesiaGeneticCode();
 			v.AddGeneticCode(p);
 			i++;
 		}
-		if(codeToLearn!=2&&AskYesNoQuestion("A virológus már megtanulta a védelmi genetikai kódot")) {
+		if(codeToLearn!=2&&AskYesNoQuestion("A virolï¿½gus mï¿½r megtanulta a vï¿½delmi genetikai kï¿½dot")) {
 			ProtectionGeneticCode p = new ProtectionGeneticCode();
 			v.AddGeneticCode(p);
 			i++;
 		}
-		if(codeToLearn!=3&&i!=3&&AskYesNoQuestion("A virológus már megtanulta a táncoló genetikai kódot")) {
+		if(codeToLearn!=3&&i!=3&&AskYesNoQuestion("A virolï¿½gus mï¿½r megtanulta a tï¿½ncolï¿½ genetikai kï¿½dot")) {
 			DanceGeneticCode p = new DanceGeneticCode();
 			v.AddGeneticCode(p);
 		}
@@ -506,20 +508,20 @@ public class Skeleton {
 	}
 
 	///
-	///	Védõ felszerelés felvételének tesztelése
+	///	Vï¿½dï¿½ felszerelï¿½s felvï¿½telï¿½nek tesztelï¿½se
 	///
 	private static void PickUpGearTest() {
 		Virologist v = new Virologist();
 		City c = new City();
 		Gear g = null;
-		if(AskYesNoQuestion("Le van bénulva a virológus?")) {
+		if(AskYesNoQuestion("Le van bï¿½nulva a virolï¿½gus?")) {
 			v.AddAgent(new ParalyzeVirus());
 		}	
-		int localGear = AskQuestion("Milyen tárgyat vegyen fel a virológus?",new String[] {"Kesztyû","Zsák","Köpeny"});
+		int localGear = AskQuestion("Milyen tï¿½rgyat vegyen fel a virolï¿½gus?",new String[] {"Kesztyï¿½","Zsï¿½k","Kï¿½peny"});
 		
 		Gear[] gears = new Gear[] {new Gloves(),new Bag(),new ProtectiveCape()};
 		g = gears[localGear];
-		if(AskYesNoQuestion("Van már a virológusnál ugyan ilyen felszerelés?")) {
+		if(AskYesNoQuestion("Van mï¿½r a virolï¿½gusnï¿½l ugyan ilyen felszerelï¿½s?")) {
 			Gear[] gears2 = new Gear[] {new Gloves(),new Bag(),new ProtectiveCape()};
 			v.GetGear(gears2[localGear]);
 		}

@@ -35,7 +35,7 @@ public class Observable implements Serializable {
 	/*
 	 * Notifies all observers, that a change might have happened to the object 
 	 */
-	public void NotifyAll() {
+	public void NotifyAllObservers() {
 		for(Observer o : observers)
 			o.Update();
 	}
