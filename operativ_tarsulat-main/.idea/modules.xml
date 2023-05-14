@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Virologus_program.iml" filepath="$PROJECT_DIR$/Virologus_program.iml" />
-      <module fileurl="file://$PROJECT_DIR$/operativ_tarsulat.iml" filepath="$PROJECT_DIR$/operativ_tarsulat.iml" />
     </modules>
   </component>
 </project>
