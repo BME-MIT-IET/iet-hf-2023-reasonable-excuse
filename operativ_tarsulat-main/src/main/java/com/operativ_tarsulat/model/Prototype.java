@@ -22,7 +22,7 @@ public class Prototype {
 	 * Gets the next command either from console or from file depending 
 	 */
 	private static String readLine() {
-		String parser = "";
+		StringBuffer parser = new StringBuffer();
 		int ch;
 		try {
 			boolean hadChar = false;
@@ -30,7 +30,7 @@ public class Prototype {
 				hadChar = true;
 				if(ch=='\n')
 					break;
-				parser += (char)ch;
+				parser.append((char)ch);
 			}
 			if(!hadChar) {
 				System.exit(0);
@@ -40,7 +40,7 @@ public class Prototype {
 			e.printStackTrace();
 			System.exit(2);
 		}
-		return parser.trim();
+		return parser.toString().trim();
 	}
 	
 	/*

@@ -16,11 +16,11 @@ public abstract class Field extends Observable implements Serializable {
 	 * @return The description of the class
 	 */
 	public String toString(){
-		String s = new String();
+		StringBuffer s = new StringBuffer();
 		for (Virologist v:virologists){
-			s = s+v.getName()+" ";
+			s.append(v.getName()).append(" ");
 		}
-		return s;
+		return s.toString();
 	}
 
 	/**

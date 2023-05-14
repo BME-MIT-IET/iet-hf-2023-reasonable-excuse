@@ -25,4 +25,16 @@ A vizsgálat pillanatában 311 bug volt összesen 203 osztályban. A következő
 ![Switch](Kepernyokepek/1ManualisEsStatikus_kepek/switch_case_fallthrough.png)
 ![Switch](Kepernyokepek/1ManualisEsStatikus_kepek/switch_case_fallthrough_fixed.png)
 
+- Több helyen is az üres String konstruktorát használtuk, ezért ezeket a konstruktorokat lecseréltük az üres String literálra, mert az hatékonyabb.
+![String](Kepernyokepek/1ManualisEsStatikus_kepek/inefficent_string_constructor.png)
+![String](Kepernyokepek/1ManualisEsStatikus_kepek/inefficent_string_constructor_fixed.png)
+
+- Több helyen is az egyenlőségjel operátort használtuk, ami nem jó, mert az `.equals()` metódusnak kellene lennie, mert ez hatékonyabb, ezért ezeket lecseréltük.
+![String](Kepernyokepek/1ManualisEsStatikus_kepek/string_equals_trouble.png)
+![String](Kepernyokepek/1ManualisEsStatikus_kepek/string_equals_trouble_fixed.png)
+
+- Több helyen is + operátorral fűztünk össze stringeket, ezért ezeket az `.append()`-re cseréltük, mert az hatékonyabb.
+![String](Kepernyokepek/1ManualisEsStatikus_kepek/bad_string_concatenation.png)
+![String](Kepernyokepek/1ManualisEsStatikus_kepek/bad_string_concatenation_fixed.png)
+
 ## Manuális kód átvizsgálás

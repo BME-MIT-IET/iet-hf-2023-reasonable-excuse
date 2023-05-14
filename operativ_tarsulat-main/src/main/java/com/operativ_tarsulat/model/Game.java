@@ -106,11 +106,11 @@ public class Game implements Serializable {
 	 * @return The description of the class
 	 */
 	public String toString(){
-		String s = new String();
+		StringBuffer s = new StringBuffer();
 		for (Virologist v:virologists){
-			s = s+v.getName()+" ";
+			s.append(v.getName()).append(" ");
 		}
-		return "Game, virologists in the game: "+s;
+		return "Game, virologists in the game: " + s;
 	}
     
     private static Game instance;
@@ -202,10 +202,10 @@ public class Game implements Serializable {
      * @param names Names of the virologists
      */
     public void StartGame(String saveFile, Integer seed, String[] names) {
-    	String namesArgAsString = "Array: ";
+    	StringBuffer namesArgAsString = new StringBuffer().append("Array: ");
     	for(String name : names)
-    		namesArgAsString+=name;
-    	Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName(),saveFile,seed.toString(),namesArgAsString);
+    		namesArgAsString.append(name);
+    	Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName(),saveFile,seed.toString(),namesArgAsString.toString());
     	this.saveFile = saveFile; // store save file name for future saves
     	r = new Random(seed); // Random for world generation 
     	
