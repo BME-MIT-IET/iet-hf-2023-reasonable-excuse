@@ -15,6 +15,7 @@ A felület általános megjelenésének vizsgálata/bírálata. A felületen szi
 4. Pálya rész tesztelése:
     - nem átlátható hogy melyik mező melyikhez csatlakozik
     - egyes mező ikonok egymásra csúsznak
+    ![](Kepernyokepek/4UITesztek_kepek/bad_lines.png)
     - a játékos neve ha túl hosszú, akkor nem látszik
     - ha két játékos áll egy mezőn az egyik nem látszik - néha felmerülő hiba
     - az összeköttetés vége nem a mező közepéig tart
@@ -30,18 +31,22 @@ A felület általános megjelenésének vizsgálata/bírálata. A felületen szi
     - átméretezéssel nem változik az elemek mérete
     - a LoadGame nem középre van igazítva
 
+    ![](Kepernyokepek/4UITesztek_kepek/loadgamebutton_problem.png)
+
 
 ### Általános teszt/észrevételek: 
-    - a program nyelve nem egységes - félig angol félig magyar
-    - margók hiánya
-    - Nem írja ki a megadott játék nevét a felület
-    - a mezők megjelenítésénél nincsen margó ezért a szélén lévő ikonok egyes részei nem látsznanak
-    - a mezők alakja nem egységes, a képek pixelesek  
-    - az interakciók listájánál nincsn alsó margó
-    - AvailableAction egybe van írva
-    - a save funkciónál nem kapunk visszajelzést, hogy a mentés sikeres volt-e vagy sem.
-    - ha egy olyan akciót akarunk végrahajtani amit nem tudunk(Ágens létrehozása), akkor nem kapunk visszajelzést, hogy nem tudjuk végrehajtani
-    - nem kapunk visszajelzést az akcióinkról a felületen.
+- a program nyelve nem egységes - félig angol félig magyar
+- margók hiánya
+
+![](Kepernyokepek/4UITesztek_kepek/margin_problem.png)
+- Nem írja ki a megadott játék nevét a felület
+- a mezők megjelenítésénél nincsen margó ezért a szélén lévő ikonok egyes részei nem látsznanak
+- a mezők alakja nem egységes, a képek pixelesek  
+- az interakciók listájánál nincsn alsó margó
+- AvailableAction egybe van írva
+- a save funkciónál nem kapunk visszajelzést, hogy a mentés sikeres volt-e vagy sem.
+- ha egy olyan akciót akarunk végrahajtani amit nem tudunk(Ágens létrehozása), akkor nem kapunk visszajelzést, hogy nem tudjuk végrehajtani
+- nem kapunk visszajelzést az akcióinkról a felületen.
 
 ### Random teszt: 
 A játékot végigjátszva random lépéseket végrehajtva teszteltük a UI működését. A fent leírt hibákon/észrevételeken kívül az elvárt működést tapasztaltuk. 
