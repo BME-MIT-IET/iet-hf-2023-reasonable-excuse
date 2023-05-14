@@ -1,7 +1,6 @@
 package com.operativ_tarsulat.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -62,7 +61,7 @@ public abstract class Field extends Observable implements Serializable {
 	public void Accept(Virologist v) {
     	Skeleton.LogFunctionCall(new Object() {}.getClass().getEnclosingMethod().getName(),v.getName(),v.getClass().getName());
     	virologists.add(v);
-		this.NotifyAll();
+		this.NotifyAllObservers();
     	Skeleton.LogReturn();
     }
 
@@ -78,7 +77,7 @@ public abstract class Field extends Observable implements Serializable {
     	{
     		virologists.remove(v);
     		Skeleton.LogReturn("true");
-    		this.NotifyAll();
+    		this.NotifyAllObservers();
     		return true;
     	}
     	Skeleton.LogReturn("false");
@@ -123,6 +122,6 @@ public abstract class Field extends Observable implements Serializable {
 	 */
 	public void Remove(Virologist v) {
 		virologists.remove(v);
-		this.NotifyAll();
+		this.NotifyAllObservers();
 	}
 }
