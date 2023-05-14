@@ -4,7 +4,7 @@ Konkrét egységtesztek az eddigi projektben nem igazán voltak jelen. A tesztel
 
 A kiválasztott részek a tesztelésre a következők: az AmnesiaVirus, a BearVirus, a ParalyzeVirus és a Virologist helyes funkcionálásának tesztelése.
 
-!![Null](Kepernyokepek\2Egysegtesztek_kepek\all_test_passed.png)
+![Null](Kepernyokepek/2Egysegtesztek_kepek/all_test_passed.png)
 
 Mint ahogy a képernyőképen is látszik a 8 teszt mindegyike sikeresen lefutott.
 
@@ -12,4 +12,4 @@ Mint ahogy a képernyőképen is látszik a 8 teszt mindegyike sikeresen lefutot
 
 A kód lefedettség a tesztek írása előtt 0 volt, mivel még nem léteztek Unit tesztek. A képernyőképen is látszik, hogy tesztek írása után ez a szám jelentősen növekedett.
 
-![Null](Kepernyokepek\2Egysegtesztek_kepek\Code_coverage.png)
+![Null](Kepernyokepek/2Egysegtesztek_kepek/Code_coverage.png)
